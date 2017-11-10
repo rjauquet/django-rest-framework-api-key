@@ -1,5 +1,9 @@
 import uuid
+
 from django.db import models
+
+from .helpers import generate_key
+
 
 
 class APIKey(models.Model):
@@ -14,7 +18,10 @@ class APIKey(models.Model):
 
     name = models.CharField(max_length=50, unique=True)
     service = models.CharField(max_length=50)
-    key = models.CharField(max_length=40, unique=True)
+    key = models.CharField(
+        max_length=40, unique=True,
+        default=generate_key
+    )
 
     def __str__(self):
         return self.name
