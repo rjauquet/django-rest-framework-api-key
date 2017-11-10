@@ -8,12 +8,17 @@ class ApiKeyAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'service', 'created', 'modified')
 
     fieldsets = (
-        ('Required Information', {'fields': ('name',)}),
+        ('Required Information', {'fields': ('name', 'service')}),
         ('Additional Information', {'fields': ('key_message',)}),
     )
-    readonly_fields = ('key_message', 'service')
 
     search_fields = ('id', 'name',)
+
+    def get_readonly_fields(self, request, obj=None):
+        if not obj:
+            return ['key_message']
+        else:
+            return ['key_message', 'service']
 
     def has_delete_permission(self, request, obj=None):
         return False
