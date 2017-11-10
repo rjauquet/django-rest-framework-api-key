@@ -13,6 +13,7 @@ class APIKey(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     name = models.CharField(max_length=50, unique=True)
+    service = models.CharField(max_length=50)
     key = models.CharField(max_length=40, unique=True)
 
     def __str__(self):

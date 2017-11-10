@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
                 ('name', models.CharField(unique=True, max_length=50)),
+                ('service', models.CharField(max_length=50)),
                 ('key', models.CharField(unique=True, max_length=40)),
             ],
             options={

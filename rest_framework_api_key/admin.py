@@ -5,13 +5,13 @@ from rest_framework_api_key.helpers import generate_key
 
 
 class ApiKeyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'created', 'modified')
+    list_display = ('id', 'name', 'service', 'created', 'modified')
 
     fieldsets = (
         ('Required Information', {'fields': ('name',)}),
         ('Additional Information', {'fields': ('key_message',)}),
     )
-    readonly_fields = ('key_message',)
+    readonly_fields = ('key_message', 'service')
 
     search_fields = ('id', 'name',)
 
@@ -28,5 +28,6 @@ class ApiKeyAdmin(admin.ModelAdmin):
             obj.key = generate_key()
             messages.add_message(request, messages.WARNING, ('The API Key for %s is %s. Please note it since you will not be able to see it again.' % (obj.name, obj.key)))
         obj.save()
+
 
 admin.site.register(APIKey, ApiKeyAdmin)
