@@ -5,7 +5,6 @@ from django.db import models
 from .helpers import generate_key
 
 
-
 class APIKey(models.Model):
 
     class Meta:
