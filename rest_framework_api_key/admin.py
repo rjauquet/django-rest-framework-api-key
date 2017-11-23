@@ -29,8 +29,7 @@ class ApiKeyAdmin(admin.ModelAdmin):
         return "The API Key will be generated once you click save."
 
     def save_model(self, request, obj, form, change):
-        if not obj.key:
-            obj.key = generate_key()
+        if not change:
             messages.add_message(request, messages.WARNING, ('The API Key for %s is %s. Please note it since you will not be able to see it again.' % (obj.name, obj.key)))
         obj.save()
 
