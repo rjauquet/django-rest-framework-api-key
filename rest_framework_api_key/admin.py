@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.contrib import messages
 from rest_framework_api_key.models import APIKey
-from rest_framework_api_key.helpers import generate_key
 
 
 class ApiKeyAdmin(admin.ModelAdmin):
