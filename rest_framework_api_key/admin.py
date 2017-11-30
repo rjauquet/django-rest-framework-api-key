@@ -20,7 +20,7 @@ class ApiKeyAdmin(admin.ModelAdmin):
             return ['key_message', 'service']
 
     def has_delete_permission(self, request, obj=None):
-        return False
+        return True
 
     def key_message(self, obj):
         if obj.key:
